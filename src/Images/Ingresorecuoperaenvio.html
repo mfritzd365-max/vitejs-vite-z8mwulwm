@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SopIA | Portal Corporativo</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>
+
+:root{
+    --primary:#0a3d91;
+    --secondary:#1f6fdc;
+    --light:#eef5ff;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    min-height:100vh;
+    margin:0;
+
+    background:
+        linear-gradient(
+            rgba(10,61,145,.88),
+            rgba(31,111,220,.78)
+        ),
+        url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=80');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.top-navbar{
+    backdrop-filter:blur(20px);
+    background:rgba(0,0,0,.18);
+    border-bottom:1px solid rgba(255,255,255,.10);
+}
+.form-icon{
+
+    width:90px;
+    height:90px;
+
+    border-radius:24px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:auto;
+
+    color:white;
+
+    font-size:40px;
+
+    background:
+        rgba(255,255,255,.12);
+
+    border:
+        2px solid rgba(255,255,255,.25);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.20);
+}
+
+.brand{
+    font-size:1.5rem;
+    font-weight:700;
+    color:white !important;
+}
+
+.company-name{
+    font-size:1.2rem;
+    color:white;
+    font-weight:600;
+}
+
+.user-badge{
+    background:rgba(255,255,255,.15);
+    border-radius:50px;
+    padding:8px 15px;
+    color:white;
+}
+
+/* ===========================
+   SIDEBAR
+=========================== */
+
+.sidebar-card{
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:25px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.sidebar-card img{
+
+    width:170px;
+    height:170px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:6px solid white;
+
+    margin-bottom:20px;
+}
+
+.sidebar-card h4{
+    font-weight:700;
+}
+
+.sidebar-card p{
+    opacity:.85;
+}
+
+.stat-card{
+
+    margin-top:15px;
+
+    background:rgba(255,255,255,.12);
+
+    border-radius:18px;
+
+    padding:15px;
+}
+
+.stat-number{
+    font-size:1.7rem;
+    font-weight:700;
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.main-container{
+    padding:30px;
+}
+
+.page-title{
+    color:white;
+    font-weight:700;
+}
+
+.page-subtitle{
+    color:rgba(255,255,255,.85);
+    margin-bottom:25px;
+}
+
+.breadcrumb{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:15px;
+
+    padding:12px 18px;
+}
+
+.breadcrumb-item,
+.breadcrumb-item.active{
+    color:white;
+}
+
+/* ===========================
+   KPI
+=========================== */
+
+.kpi-card{
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    color:white;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.kpi-card h3{
+    margin:0;
+    font-weight:700;
+}
+
+/* ===========================
+   SEARCH
+=========================== */
+
+.search-box{
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+/* ===========================
+   CARDS
+=========================== */
+
+.department-card{
+
+    border:none;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.12);
+
+    transition:.35s;
+}
+
+.department-card:hover{
+
+    transform:
+        translateY(-8px)
+        scale(1.02);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.18);
+}
+.modern-line-input{
+
+    width:100%;
+
+    background:transparent;
+
+    border:none;
+
+    border-bottom:
+        2px solid rgba(255,255,255,.35);
+
+    padding:14px 5px;
+
+    color:white;
+
+    font-size:16px;
+
+    transition:.3s;
+}
+
+.modern-line-input::placeholder{
+    color:rgba(255,255,255,.55);
+}
+
+.modern-line-input:focus{
+
+    outline:none;
+
+    border-bottom:
+        2px solid white;
+
+    box-shadow:
+        0 10px 25px rgba(255,255,255,.15);
+}
+
+.form-label{
+
+    color:white;
+
+    font-weight:600;
+
+    margin-bottom:10px;
+
+    letter-spacing:.3px;
+}
+
+.department-card img{
+
+    width:100%;
+    height:190px;
+
+    object-fit:cover;
+}
+
+.department-card .card-title{
+
+    color:var(--primary);
+    font-weight:700;
+}
+
+.department-card .card-text{
+    color:#6c757d;
+}
+
+.doc-badge{
+
+    font-size:.8rem;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.footer{
+
+    background:rgba(0,0,0,.15);
+
+    backdrop-filter:blur(15px);
+
+    border-top:1px solid rgba(255,255,255,.10);
+
+    color:white;
+
+    text-align:center;
+
+    padding:15px;
+}
+.navbar-logo{
+
+    height:55px;
+    width:auto;
+
+    object-fit:contain;
+
+    display:block;
+
+    filter:
+        drop-shadow(
+            0 4px 10px rgba(0,0,0,.15)
+        );
+}
+
+.brand-beta{
+
+    color:#ffffff;
+
+    font-family:'Segoe UI',sans-serif;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    letter-spacing:.3px;
+
+    white-space:nowrap;
+
+    text-shadow:
+        0 1px 3px rgba(0,0,0,.25);
+}
+
+.navbar-logo:hover{
+    transform:scale(1.05);
+}
+.department-card{
+    position:relative;
+}
+
+.department-admin{
+    position:absolute;
+    top:15px;
+    right:15px;
+    z-index:100;
+    display:none;
+}
+
+.department-admin{
+    position:absolute;
+    top:15px;
+    right:15px;
+    z-index:100;
+    display:none;
+}
+
+.modern-checkbox{
+
+    appearance:none;
+    -webkit-appearance:none;
+
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.95);
+
+    border:2px solid #dbe4ff;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.15);
+
+    transition:.25s;
+}
+
+.modern-checkbox:hover{
+
+    transform:scale(1.08);
+
+    border-color:#1f6fdc;
+}
+
+.modern-checkbox:checked{
+
+    background:#0a3d91;
+
+    border-color:#0a3d91;
+}
+
+.modern-checkbox:checked::after{
+
+    content:"✓";
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    line-height:1;
+}
+.modern-checkbox:checked{
+
+    background:linear-gradient(
+        135deg,
+        #0a3d91,
+        #1f6fdc
+    );
+
+    border-color:#1f6fdc;
+
+    box-shadow:
+        0 0 0 4px rgba(31,111,220,.20),
+        0 10px 25px rgba(31,111,220,.30);
+}
+
+.edit-mode .department-admin{
+    display:block;
+}
+
+.edit-mode .department-card{
+    border:3px dashed rgba(10,61,145,.35);
+}
+.benefit-check{
+
+    width:70px;
+    height:70px;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(255,255,255,.15);
+
+    border:
+        2px solid rgba(255,255,255,.85);
+
+    color:white;
+
+    font-size:34px;
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.15);
+
+    transition:.3s;
+}
+
+.kpi-card:hover .benefit-check{
+
+    transform:scale(1.1);
+
+    background:
+        rgba(255,255,255,.25);
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,.25);
+}
+.section-divider{
+
+    width:120px;
+    height:3px;
+
+    margin:0 auto;
+
+    border-radius:50px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.95),
+            transparent
+        );
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.5);
+}
+
+.area-dropdown-btn{
+
+    width:100%;
+    height:72px;
+
+    border:none;
+
+    border-radius:22px;
+
+    color:white;
+
+    padding:0 24px;
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.18);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    transition:.3s;
+}
+
+.area-dropdown-btn:hover{
+
+    transform:translateY(-2px);
+
+    border-color:#8ec5ff;
+
+    box-shadow:
+        0 15px 35px rgba(79,140,255,.30);
+}
+
+.area-dropdown-menu{
+
+    position:absolute;
+
+    top:calc(100% + 10px);
+
+    left:0;
+
+    width:100%;
+
+    display:none;
+
+    z-index:99999;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    background:rgba(18,23,48,.97);
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.35);
+}
+
+.area-dropdown-menu.show{
+    display:block;
+}
+
+.area-option{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px 20px;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.area-option:hover{
+
+    background:linear-gradient(
+        135deg,
+        #0a3d91,
+        #1f6fdc
+    );
+}
+
+.area-option i{
+
+    font-size:1.2rem;
+
+    color:#8ec5ff;
+
+    min-width:28px;
+}
+
+.area-option strong{
+
+    display:block;
+
+    font-size:.95rem;
+}
+
+.area-option small{
+
+    color:rgba(255,255,255,.65);
+}
+.modern-select-wrapper{
+    position:relative;
+}
+
+.select-icon{
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+    color:rgba(255,255,255,.75);
+    font-size:1rem;
+    pointer-events:none;
+}
+
+.area-select-container{
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    height:64px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.18);
+
+    transition:.3s;
+}
+
+.area-select-container:hover{
+
+    border-color:rgba(255,255,255,.45);
+
+    box-shadow:
+        0 15px 35px rgba(79,140,255,.25);
+}
+
+.area-select-container:focus-within{
+
+    border-color:#8ec5ff;
+
+    box-shadow:
+        0 0 0 4px rgba(142,197,255,.15),
+        0 15px 35px rgba(79,140,255,.35);
+}
+.password-recovery-card{
+
+    padding:40px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.15);
+
+    margin-bottom:80px;
+}
+
+.area-select-icon{
+
+    width:60px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#8ec5ff;
+
+    font-size:1.2rem;
+}
+
+.area-select{
+
+    flex:1;
+
+    background:transparent;
+    border:none;
+
+    color:white;
+
+    font-size:1rem;
+    font-weight:500;
+
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+
+    outline:none;
+
+    cursor:pointer;
+}
+
+.area-select option{
+
+    background:#0f172a;
+
+    color:white;
+
+    padding:12px;
+}
+
+.area-select-arrow{
+
+    width:55px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#8ec5ff;
+
+    font-size:1rem;
+
+    pointer-events:none;
+}
+.glass-select:focus{
+
+    outline:none;
+
+    border-bottom:2px solid white;
+}
+
+.glass-select option{
+
+    color:#1f2937;
+
+    background:white;
+}
+.glass-input{
+    width:100%;
+    padding:18px 0;
+    border:none;
+    border-bottom:2px solid rgba(255,255,255,.25);
+    background:transparent;
+    color:#fff;
+    font-size:1rem;
+    transition:.3s;
+}
+
+.glass-input::placeholder{
+    color:rgba(255,255,255,.55);
+}
+
+.glass-input:focus{
+    outline:none;
+    border-bottom-color:#ffffff;
+    box-shadow:none;
+}
+
+.modern-label{
+    color:#fff;
+    font-size:.85rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:10px;
+    display:block;
+}
+.logo-upload-container{
+
+    display:flex;
+    align-items:center;
+    gap:30px;
+
+    padding:25px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:24px;
+
+    transition:.3s;
+}
+
+.logo-upload-container:hover{
+    border-color:rgba(255,255,255,.35);
+}
+
+.logo-preview{
+
+    width:120px;
+    height:120px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.10);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+}
+
+.logo-preview img{
+
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+.logo-upload-content h5{
+
+    color:#fff;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.logo-upload-content p{
+
+    color:rgba(255,255,255,.75);
+    margin-bottom:15px;
+}
+
+.btn-upload{
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    padding:12px 24px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.btn-upload:hover{
+
+    background:rgba(255,255,255,.20);
+
+    transform:translateY(-2px);
+}
+.form-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:16px;
+    margin-top:40px;
+}
+
+/* Cancelar */
+
+.btn-cancel-enterprise{
+
+    height:52px;
+    padding:0 24px;
+
+    border:none;
+    border-radius:14px;
+
+    color:white;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    transition:.3s ease;
+}
+.offcanvas-sopia{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,61,145,.98),
+            rgba(31,111,220,.95)
+        );
+
+    border-right:
+        1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(25px);
+}
+
+.mobile-brand-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:20px;
+}
+
+.mobile-brand-card img{
+
+    width:160px;
+
+    height:160px;
+
+    object-fit:contain;
+
+    border-radius:24px;
+
+    padding:15px;
+
+    background:
+        rgba(255,255,255,.10);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.25);
+
+    margin-bottom:25px;
+}
+.mobile-brand-card h4{
+
+    color:white;
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+    text-shadow:
+        0 0 15px rgba(255,255,255,.25);
+}
+
+.mobile-brand-card p{
+
+    color:rgba(255,255,255,.85);
+
+    margin-bottom:25px;
+
+    font-size:1rem;
+}
+
+.mobile-divider{
+
+    width:150px;
+
+    height:3px;
+
+    border-radius:50px;
+
+    margin-bottom:25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            white,
+            transparent
+        );
+}
+.success-card{
+
+    text-align:center;
+
+    padding:50px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.20);
+
+    animation:fadeInUp .6s ease;
+}
+
+.success-check{
+
+    width:120px;
+    height:120px;
+
+    margin:0 auto 25px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:linear-gradient(
+        135deg,
+        #1ecb6b,
+        #11a84f
+    );
+
+    color:white;
+
+    font-size:60px;
+
+    box-shadow:
+        0 0 30px rgba(30,203,107,.40),
+        0 20px 40px rgba(0,0,0,.20);
+}
+
+.success-title{
+
+    color:white;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+}
+
+.success-text{
+
+    color:rgba(255,255,255,.90);
+
+    font-size:1.1rem;
+
+    margin-bottom:10px;
+}
+
+.success-text-small{
+
+    color:rgba(255,255,255,.75);
+
+    max-width:600px;
+
+    margin:auto auto 30px;
+}
+
+.btn-review-mail{
+
+    border:none;
+
+    padding:15px 35px;
+
+    border-radius:16px;
+
+    font-weight:600;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #4f8cff,
+        #6f42c1
+    );
+
+    box-shadow:
+        0 12px 30px rgba(79,140,255,.35);
+
+    transition:.3s;
+}
+
+.btn-review-mail:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 20px 40px rgba(79,140,255,.45);
+}
+
+@keyframes fadeInUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(40px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+.mobile-version{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+.mobile-version div{
+
+    color:white;
+
+    padding:14px 18px;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.06)
+        );
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.15);
+
+    transition:.3s;
+}
+
+.mobile-version div:hover{
+
+    transform:translateY(-3px);
+
+    background:
+        rgba(255,255,255,.15);
+}
+
+.mobile-version i{
+
+    color:#8ec5ff;
+
+    margin-right:8px;
+}
+
+.btn-cancel-enterprise:hover{
+
+    background:rgba(255,255,255,.15);
+
+    transform:translateY(-2px);
+}
+
+/* Guardar */
+
+.btn-save-enterprise{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    height:52px;
+
+    padding:0 28px 0 16px;
+
+    border:none;
+    border-radius:14px;
+
+    font-weight:600;
+    color:#fff;
+
+    background:linear-gradient(
+        135deg,
+        #4f8cff,
+        #6f42c1
+    );
+
+    box-shadow:
+        0 10px 25px rgba(79,140,255,.30);
+
+    transition:.35s ease;
+}
+
+.btn-save-enterprise:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 18px 35px rgba(79,140,255,.45);
+}
+
+.btn-save-icon{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:34px;
+    height:34px;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.18);
+
+    font-size:1rem;
+}
+.security-help-btn{
+
+    position:fixed;
+
+    bottom:25px;
+    right:25px;
+
+    z-index:1050;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    cursor:pointer;
+
+    padding:14px 18px;
+
+    border-radius:50px;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #4f8cff,
+        #6f42c1
+    );
+
+    box-shadow:
+        0 10px 30px rgba(79,140,255,.35),
+        0 0 20px rgba(111,66,193,.25);
+
+    transition:.3s ease;
+
+    animation:floatSecurity 3s ease-in-out infinite;
+}
+
+.security-help-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 18px 35px rgba(79,140,255,.45),
+        0 0 30px rgba(111,66,193,.35);
+}
+
+.security-icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.20);
+
+    font-size:1.2rem;
+}
+.security-modal{
+
+    background:rgba(36,39,60,.95);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:24px;
+
+    color:white;
+}
+
+.security-big-icon{
+
+    font-size:3rem;
+
+    color:#8ec5ff;
+
+    margin-bottom:15px;
+}
+.custom-area-dropdown{
+    position:relative;
+    width:100%;
+    z-index:100;
+}
+
+.security-help-btn span{
+
+    font-weight:600;
+    font-size:.9rem;
+    white-space:nowrap;
+}
+.security-text {
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 1.7;
+    color: rgba(255,255,255,.9);
+}
+
+@keyframes floatSecurity{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:991px){
+
+    .main-container{
+        padding:20px;
+    }
+
+    .sidebar-card{
+        margin-bottom:25px;
+    }
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+
+<nav class="navbar navbar-expand-lg top-navbar">
+
+<div class="container-fluid">
+
+<button
+        class="btn btn-light d-lg-none me-2"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#sidebar">
+
+    <i class="bi bi-list"></i>
+
+</button>
+
+ <a onclick="RerideccionarHome()">
+    
+    
+
+    <img src="Images/Logosopia.png.png" style="
+    width: 100px;
+">
+
+    <div class="ms-3">
+
+        
+
+        <div class="brand-beta">
+            Inteligencia Artificial y Gestión del Conocimiento
+        </div>
+
+    </div>
+
+</a>
+
+</a>
+
+</a>
+<div class="d-flex align-items-center gap-3">
+
+    
+    <div class="security-help-btn"
+     data-bs-toggle="modal"
+     data-bs-target="#modalSeguridad">
+
+    <div class="security-icon">
+        <i class="bi bi-question-lg"></i>
+    </div>
+
+    <span>
+        ¿Cómo protegemos tu información?
+    </span>
+
+</div>
+
+</div>
+
+</div>
+
+</nav>
+
+<div class="container-fluid mt-4">
+
+<div class="row">
+
+    <!-- SIDEBAR DESKTOP -->
+
+    <div class="col-lg-3 d-none d-lg-block">
+
+        <div class="sidebar-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=500&q=80"
+                alt="SopIA">
+
+            <h4>SOPIA</h4>
+
+            
+
+        </div>
+
+    </div>
+
+    <!-- SIDEBAR MOBILE -->
+
+    <div class="offcanvas offcanvas-start offcanvas-sopia"
+     tabindex="-1"
+     id="sidebar">
+
+    <div class="offcanvas-header border-0">
+
+        <h5 class="m-0 text-white fw-bold">
+          
+        </h5>
+
+        <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="offcanvas">
+        </button>
+
+    </div>
+
+    <div class="offcanvas-body">
+
+        <div class="mobile-brand-card">
+
+           <img src="Images/Logosopia.png.png">
+
+           <h4>SOPIA</h4>
+
+                <p>
+                    Gestión del Conocimiento
+                </p>
+
+                <div class="mobile-slogan">
+                    Inteligencia Artificial para potenciar tu organización
+                </div>
+
+                <div class="mobile-divider"></div>
+
+                <div class="mobile-version">
+
+           
+
+           
+
+                <div>
+                    <i class="bi bi-box-seam"></i>
+                    Versión 1.0.0
+                </div>
+
+                <div>
+                    <i class="bi bi-c-circle"></i>
+                    Copyright SOPIA
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- MAIN -->
+
+    <div class="col-lg-9">
+
+        <div class="main-container">
+
+            <nav aria-label="breadcrumb">
+
+                <ol class="breadcrumb">
+
+                    <li class="breadcrumb-item">
+                        Inicio
+                    </li>
+
+                    <li class="breadcrumb-item active">
+                        Registro de Empresas
+                    </li>
+
+                </ol>
+
+            </nav>
+
+            <h2 class="page-title mt-3">
+                Portal Corporativo
+            </h2>
+
+            <p class="page-subtitle">
+                Exploración de áreas organizacionales y conocimiento empresarial.
+            </p>
+
+            <!-- KPI -->
+
+            <div class="row g-3 mb-5">
+            
+                <!-- aqui animacion de OK mail enviado-->
+                 <div class="row justify-content-center">
+
+    <div class="col-lg-7">
+
+        <div class="success-card">
+
+            <div class="success-check">
+
+                <i class="bi bi-check-lg"></i>
+
+            </div>
+
+            <h2 class="success-title">
+                Correo Enviado Correctamente
+            </h2>
+
+            <p class="success-text">
+
+                Hemos enviado un correo electrónico con las instrucciones
+                necesarias para continuar el proceso de validación.
+
+            </p>
+
+            <p class="success-text-small">
+
+                Revisa tu correo electrónico. Allí recibirás una URL segura
+                para validar tu identidad y continuar con la recuperación
+                de tu cuenta.
+
+            </p>
+
+            <button class="btn-review-mail" onclick="RerideccionarHome()">
+
+                <i class="bi bi-envelope-check-fill me-2"></i>
+
+                Revisa tu Correo Electrónico
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+    
+            </div>
+
+            
+
+            
+
+
+
+    
+
+  
+
+</div>
+
+        <!-- MANTENER TU BLOQUE UPLOAD ACTUAL -->
+       <div class="col-12 mt-5">
+
+    <label class="modern-label mb-3">
+      
+    </label>
+    <div class="modal fade"
+     id="modalSeguridad"
+     tabindex="-1">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content security-modal">
+
+            <div class="modal-header border-0">
+
+                <h5 class="modal-title">
+                    <i class="bi bi-shield-lock-fill me-2"></i>
+                    Seguridad de la Información
+                </h5>
+
+                <button type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row g-4">
+
+                    <div class="col-md-4 text-center">
+                        <i class="bi bi-shield-check security-big-icon"></i>
+                        <h6>Protección</h6>
+                        <p class="security-text">
+                            La información se almacena de forma segura y con acceso restringido.
+                            Para garantizar la confidencialidad y la segregación de los datos, cada empresa cuenta con credenciales únicas, tokens de seguridad y claves de acceso personalizadas para sus usuarios autorizados.
+                            Esto permite controlar y auditar el acceso a la información, asegurando que los datos sean visibles únicamente para los usuarios pertenecientes a su organización.
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 text-center">
+                        <i class="bi bi-lock-fill security-big-icon"></i>
+                        <h6>Confidencialidad</h6>
+                        <p class="security-text">
+                            Los documentos sólo pueden ser visualizados por personal autorizado. Para ello, se crean perfiles y niveles de acceso específicos dentro de la institución, permitiendo controlar qué información puede consultar cada usuario. Si bien la Inteligencia Artificial puede facilitar el acceso a información autorizada, determinados contenidos de carácter personal, confidencial o institucional cuentan con restricciones adicionales, pudiendo ser visualizados únicamente por los perfiles correspondientes y, en algunos casos, sin permisos de edición o modificación.
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 text-center">
+                        <i class="bi bi-database-lock security-big-icon"></i>
+                        <h6>Resguardo</h6>
+                        <p class="security-text">
+                            Los archivos son protegidos y monitoreados para preservar su integridad. Adicionalmente, la plataforma mantiene mecanismos de resguardo, trazabilidad y control de cambios que permiten identificar el acceso y las modificaciones realizadas sobre la información. Esto contribuye a la continuidad operacional, la recuperación de datos ante incidentes y la conservación segura del conocimiento institucional.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+   
+
+    </div>
+
+        <div class="form-actions mt-5 pb-5">
+
+       <div class="action-panel">
+
+    <div class="form-actions">
+
+        <button
+            type="button"
+            class="btn-cancel-enterprise"
+            onclick="RerideccionarHome()">
+
+            <i class="bi bi-arrow-left-short"></i>
+            Volver
+
+        </button>
+
+        
+
+    </div>
+
+</div>
+
+</form>
+    
+
+    
+
+</div>
+
+</div>
+
+<footer class="footer">
+    Copyright © SopIA | Inteligencia Artificial y Gestión del Conocimiento
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script>
+    function toggleAreaDropdown() {
+
+    document
+        .getElementById('areaDropdownMenu')
+        .classList.toggle('show');
+}
+
+function selectArea(area) {
+
+    document
+        .getElementById('selectedArea')
+        .innerText = area;
+
+    document
+        .getElementById('areaDropdownMenu')
+        .classList.remove('show');
+}
+
+document.addEventListener('click', function(e){
+
+    const dropdown =
+        document.querySelector('.custom-area-dropdown');
+
+    if (!dropdown.contains(e.target)) {
+
+        document
+            .getElementById('areaDropdownMenu')
+            .classList.remove('show');
+    }
+});
+
+function RerideccionarHome()
+{
+    window.location.href="index.html"
+}
+function habilitarEdicion(){
+
+    document.body.classList.toggle('edit-mode');
+
+    bootstrap.Modal
+        .getInstance(
+            document.getElementById('adminModal')
+        ).hide();
+}
+
+function habilitarEliminacion(){
+
+    const seleccionados =
+        document.querySelectorAll(
+            '.modern-checkbox:checked'
+        );
+
+    if(seleccionados.length === 0){
+
+        alert('Seleccione uno o más departamentos.');
+
+        return;
+    }
+
+    seleccionados.forEach(cb => {
+
+        cb.closest('.department-item').remove();
+
+    });
+
+    salirModoEdicion();
+
+    bootstrap.Modal
+        .getInstance(
+            document.getElementById('adminModal')
+        )
+        .hide();
+}
+function salirModoEdicion(){
+
+    document.body.classList.remove('edit-mode');
+
+    document
+        .querySelectorAll('.modern-checkbox')
+        .forEach(cb => {
+
+            cb.checked = false;
+
+        });
+
+    document
+        .querySelectorAll('.department-admin')
+        .forEach(item => {
+
+            item.style.display = 'none';
+
+        });
+}
+function finalizarEdicion(){
+
+    document.body.classList.remove('edit-mode');
+
+    document
+        .querySelectorAll('.modern-checkbox')
+        .forEach(cb => {
+
+            cb.checked = false;
+
+        });
+
+    document
+        .querySelectorAll('.department-admin')
+        .forEach(item => {
+
+            item.style.display = 'none';
+
+        });
+
+    bootstrap.Modal
+        .getInstance(
+            document.getElementById('adminModal')
+        )
+        .hide();
+}
+function habilitarEdicion(){
+
+    document.body.classList.add('edit-mode');
+
+    document
+        .querySelectorAll('.department-admin')
+        .forEach(item => {
+
+            item.style.display = 'block';
+
+        });
+
+    bootstrap.Modal
+        .getInstance(
+            document.getElementById('adminModal')
+        )
+        .hide();
+}
+
+function previewLogo(input) {
+
+    if (input.files && input.files[0]) {
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+
+            document
+                .getElementById("logoPreview")
+                .src = e.target.result;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
+
+document.getElementById('searchInput').addEventListener('keyup', function() {
+
+    let filter = this.value.toLowerCase();
+
+    let items = document.querySelectorAll('.department-item');
+
+    items.forEach(item => {
+
+        let text = item.innerText.toLowerCase();
+
+        item.style.display =
+            text.includes(filter)
+            ? ''
+            : 'none';
+
+    });
+
+});
+
+
+</script>
+
+
+<script>
+document.querySelector('.admin-menu').addEventListener('click', function () {
+const modal = new bootstrap.Modal(
+document.getElementById('adminModal')
+);
+modal.show();
+});
+</script>
+
+
+
+<!-- MODAL ADMIN -->
+
+<div class="modal fade" id="adminModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content border-0 shadow-lg rounded-4">
+
+            <div class="modal-header bg-primary text-white border-0">
+
+                <h5 class="modal-title">
+                    <i class="bi bi-shield-lock me-2"></i>
+                    Administración de Portal
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+           
+            <div class="modal-body p-4">
+
+                <div class="d-grid gap-3">
+
+                    <button
+                        class="btn btn-outline-primary btn-lg rounded-4"
+                        onclick="habilitarEdicion()">
+
+                        <i class="bi bi-pencil-square me-2"></i>
+                        Editar Departamentos
+
+                    </button>
+
+                    <button
+                        class="btn btn-outline-danger btn-lg rounded-4"
+                        onclick="habilitarEliminacion()">
+
+                        <i class="bi bi-trash me-2"></i>
+                        Eliminar Departamentos
+
+                    </button>
+                     <button
+                            class="btn btn-success btn-lg rounded-4"
+                            onclick="finalizarEdicion()">
+
+                            <i class="bi bi-check2-circle me-2"></i>
+                            Finalizar Edición
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

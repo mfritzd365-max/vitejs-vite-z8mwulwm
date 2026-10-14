@@ -1,0 +1,1717 @@
+/* =========================================================
+   SOPIA
+   RECUPERACIÓN DE CONTRASEÑA
+   ========================================================= */
+
+   :root {
+
+    --sopia-blue: #0b5ed7;
+    --sopia-blue-dark: #084298;
+    --sopia-blue-light: #3d8bfd;
+  
+    --sopia-text: #172033;
+    --sopia-soft: #667085;
+  
+    --sopia-success: #198754;
+    --sopia-danger: #dc3545;
+  
+    --shadow-card:
+      0 30px 70px rgba(15, 35, 70, 0.18),
+      0 10px 30px rgba(15, 35, 70, 0.08);
+  
+    --transition: .25s ease;
+  }
+  
+  
+  /* =========================================================
+     RESET
+     ========================================================= */
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body,
+  #root {
+    margin: 0;
+    padding: 0;
+  
+    width: 100%;
+    min-height: 100%;
+  }
+  
+  body {
+  
+    font-family:
+      Inter,
+      "Segoe UI",
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif;
+  
+    color: var(--sopia-text);
+  }
+  
+  
+  /* =========================================================
+     PAGE
+     ========================================================= */
+  
+  .recuperacion-pass-page {
+  
+    min-height: 100vh;
+  
+    width: 100%;
+  
+    position: relative;
+  
+    display: flex;
+  
+    flex-direction: column;
+  
+    background-size: cover;
+  
+    background-position: center;
+  
+    background-repeat: no-repeat;
+  
+    overflow-x: hidden;
+  }
+  
+  
+  /* =========================================================
+     OVERLAY
+     ========================================================= */
+  
+  .recuperacion-pass-overlay {
+  
+    position: fixed;
+  
+    inset: 0;
+  
+    z-index: 0;
+  
+    background:
+      linear-gradient(
+        135deg,
+        rgba(7, 42, 92, .68),
+        rgba(13, 91, 170, .48),
+        rgba(255, 255, 255, .22)
+      );
+  
+    backdrop-filter: blur(3px);
+  
+    -webkit-backdrop-filter: blur(3px);
+  }
+  
+  
+  /* =========================================================
+     NAVBAR
+     ========================================================= */
+  
+  .recuperacion-pass-navbar {
+  
+    position: fixed;
+  
+    top: 0;
+    left: 0;
+    right: 0;
+  
+    height: 76px;
+  
+    z-index: 20;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: space-between;
+  
+    padding: 0 42px;
+  
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,.96),
+        rgba(245,249,255,.90)
+      );
+  
+    border-bottom:
+      1px solid rgba(11,94,215,.13);
+  
+    box-shadow:
+      0 5px 25px rgba(5,45,95,.12);
+  
+    backdrop-filter: blur(16px);
+  
+    -webkit-backdrop-filter: blur(16px);
+  }
+  
+  
+  /* =========================================================
+     LOGO
+     ========================================================= */
+  
+  .recuperacion-pass-navbar a {
+  
+    display: flex;
+  
+    align-items: center;
+  
+    height: 100%;
+  }
+  
+  .recuperacion-pass-navbar img {
+  
+    width: 145px;
+  
+    max-height: 52px;
+  
+    object-fit: contain;
+  
+    display: block;
+  
+    transition:
+      transform var(--transition),
+      opacity var(--transition);
+  }
+  
+  .recuperacion-pass-navbar img:hover {
+  
+    transform: scale(1.025);
+  
+    opacity: .92;
+  }
+  
+  
+  /* =========================================================
+     BOTÓN AYUDA
+     ========================================================= */
+  
+  .btn-ayuda {
+  
+    height: 42px;
+  
+    padding:
+      0 16px 0 8px;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 9px;
+  
+    border:
+      1px solid rgba(11,94,215,.15);
+  
+    border-radius: 12px;
+  
+    background:
+      rgba(255,255,255,.72);
+  
+    color:
+      var(--sopia-blue-dark);
+  
+    font-family: inherit;
+  
+    font-size: 14px;
+  
+    font-weight: 600;
+  
+    cursor: pointer;
+  
+    box-shadow:
+      0 5px 16px rgba(11,94,215,.08);
+  
+    transition:
+      transform var(--transition),
+      box-shadow var(--transition);
+  }
+  
+  .btn-ayuda:hover {
+  
+    transform:
+      translateY(-1px);
+  
+    background: #fff;
+  
+    box-shadow:
+      0 9px 24px rgba(11,94,215,.14);
+  }
+  
+  .ayuda-icon {
+  
+    width: 28px;
+    height: 28px;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 50%;
+  
+    color: white;
+  
+    background:
+      linear-gradient(
+        135deg,
+        var(--sopia-blue),
+        var(--sopia-blue-light)
+      );
+  
+    font-weight: 700;
+  
+    box-shadow:
+      0 5px 12px rgba(11,94,215,.25);
+  }
+  
+  
+  /* =========================================================
+     CONTENT
+     ========================================================= */
+  
+  .recuperacion-pass-content {
+  
+    position: relative;
+  
+    z-index: 5;
+  
+    flex: 1;
+  
+    min-height: 100vh;
+  
+    width: 100%;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: center;
+  
+    padding:
+      115px 20px 90px;
+  }
+  
+  
+  /* =========================================================
+     CARD
+     ========================================================= */
+  
+  .recuperacion-pass-card {
+  
+    width: 100%;
+  
+    max-width: 510px;
+  
+    padding:
+      38px 42px 31px;
+  
+    position: relative;
+  
+    border-radius: 24px;
+  
+    background:
+      rgba(255,255,255,.97);
+  
+    border:
+      1px solid rgba(255,255,255,.9);
+  
+    box-shadow: var(--shadow-card);
+  
+    animation:
+      passCardAppear .6s ease both;
+  }
+  
+  .recuperacion-pass-card::before {
+  
+    content: "";
+  
+    position: absolute;
+  
+    top: 0;
+    left: 0;
+  
+    width: 100%;
+    height: 4px;
+  
+    border-radius:
+      24px 24px 0 0;
+  
+    background:
+      linear-gradient(
+        90deg,
+        var(--sopia-blue-dark),
+        var(--sopia-blue-light)
+      );
+  }
+  
+  
+  /* =========================================================
+     ICON
+     ========================================================= */
+  
+  .pass-icon {
+  
+    width: 58px;
+    height: 58px;
+  
+    margin:
+      0 auto 17px;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 16px;
+  
+    color: var(--sopia-blue);
+  
+    background:
+      linear-gradient(
+        135deg,
+        #eaf3ff,
+        #dcecff
+      );
+  
+    font-size: 25px;
+  
+    box-shadow:
+      inset 0 0 0 1px rgba(11,94,215,.08);
+  }
+  
+  
+  /* =========================================================
+     EYEBROW
+     ========================================================= */
+  
+  .pass-eyebrow {
+  
+    display: block;
+  
+    margin-bottom: 9px;
+  
+    text-align: center;
+  
+    color: var(--sopia-blue);
+  
+    font-size: 10px;
+  
+    font-weight: 800;
+  
+    letter-spacing: 1.5px;
+  }
+  
+  
+  /* =========================================================
+     TITULO
+     ========================================================= */
+  
+  .recuperacion-pass-card h1 {
+  
+    margin: 0;
+  
+    text-align: center;
+  
+    color: #101828;
+  
+    font-size: 33px;
+  
+    line-height: 1.15;
+  
+    letter-spacing: -1px;
+  }
+  
+  .recuperacion-pass-card h1 span {
+  
+    color: var(--sopia-blue);
+  }
+  
+  
+  /* =========================================================
+     DESCRIPCIÓN
+     ========================================================= */
+  
+  .pass-description {
+  
+    max-width: 400px;
+  
+    margin:
+      14px auto 25px;
+  
+    text-align: center;
+  
+    color: var(--sopia-soft);
+  
+    font-size: 13.5px;
+  
+    line-height: 1.6;
+  }
+  
+  
+  /* =========================================================
+     FORM
+     ========================================================= */
+  
+  .pass-form {
+  
+    width: 100%;
+  }
+  
+  
+  /* =========================================================
+     PASSWORD FIELD
+     ========================================================= */
+  
+  .pass-field {
+  
+    position: relative;
+  
+    margin-bottom: 14px;
+  }
+  
+  .pass-field input {
+  
+    width: 100%;
+  
+    height: 57px;
+  
+    padding:
+      20px 48px 6px 16px;
+  
+    border:
+      1px solid #d0d5dd;
+  
+    border-radius: 13px;
+  
+    background: #fff;
+  
+    color: #101828;
+  
+    outline: none;
+  
+    font-family: inherit;
+  
+    font-size: 14px;
+  
+    transition:
+      border-color var(--transition),
+      box-shadow var(--transition);
+  }
+  
+  .pass-field input:focus {
+  
+    border-color:
+      var(--sopia-blue);
+  
+    box-shadow:
+      0 0 0 4px rgba(11,94,215,.10);
+  }
+  
+  
+  /* =========================================================
+     LABEL
+     ========================================================= */
+  
+  .pass-field label {
+  
+    position: absolute;
+  
+    left: 16px;
+  
+    top: 18px;
+  
+    color: #667085;
+  
+    font-size: 14px;
+  
+    pointer-events: none;
+  
+    transition:
+      all .2s ease;
+  }
+  
+  .pass-field input:focus + label,
+  .pass-field input:not(:placeholder-shown) + label {
+  
+    top: 6px;
+  
+    left: 12px;
+  
+    padding: 0 5px;
+  
+    background: white;
+  
+    color: var(--sopia-blue);
+  
+    font-size: 10px;
+  
+    font-weight: 700;
+  }
+  
+  
+  /* =========================================================
+     TOGGLE PASSWORD
+     ========================================================= */
+  
+  .password-toggle {
+  
+    position: absolute;
+  
+    right: 12px;
+  
+    top: 50%;
+  
+    transform: translateY(-50%);
+  
+    width: 34px;
+    height: 34px;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border: none;
+  
+    border-radius: 8px;
+  
+    color: #667085;
+  
+    background: transparent;
+  
+    cursor: pointer;
+  
+    transition:
+      background var(--transition),
+      color var(--transition);
+  }
+  
+  .password-toggle:hover {
+  
+    color: var(--sopia-blue);
+  
+    background:
+      #eef5ff;
+  }
+  
+  
+  /* =========================================================
+     STRENGTH
+     ========================================================= */
+  
+  .password-strength {
+  
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 10px;
+  
+    margin:
+      -5px 2px 14px;
+  }
+  
+  .strength-bars {
+  
+    flex: 1;
+  
+    display: flex;
+  
+    gap: 4px;
+  }
+  
+  .strength-bars span {
+  
+    height: 4px;
+  
+    flex: 1;
+  
+    border-radius: 5px;
+  
+    background: #e4e7ec;
+  }
+  
+  .strength-bars span.active {
+  
+    background:
+      var(--sopia-blue);
+  }
+  
+  .strength-text {
+  
+    min-width: 112px;
+  
+    text-align: right;
+  
+    color: #667085;
+  
+    font-size: 10px;
+  
+    font-weight: 600;
+  }
+  
+  
+  /* =========================================================
+     MATCH
+     ========================================================= */
+  
+  .password-match {
+  
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 7px;
+  
+    margin:
+      -3px 2px 13px;
+  
+    font-size: 11px;
+  
+    font-weight: 600;
+  }
+  
+  .password-match.success {
+  
+    color: var(--sopia-success);
+  }
+  
+  .password-match.error {
+  
+    color: var(--sopia-danger);
+  }
+  
+  
+  /* =========================================================
+     REQUISITOS
+     ========================================================= */
+  
+  .password-requirements {
+  
+    margin:
+      15px 0 17px;
+  
+    padding:
+      14px;
+  
+    border:
+      1px solid #e4e7ec;
+  
+    border-radius: 12px;
+  
+    background:
+      #f8fafc;
+  }
+  
+  .requirements-title {
+  
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 7px;
+  
+    margin-bottom: 10px;
+  
+    color: #475467;
+  
+    font-size: 11px;
+  
+    font-weight: 700;
+  }
+  
+  .requirements-title i {
+  
+    color: var(--sopia-blue);
+  }
+  
+  .requirements-list {
+  
+    display: grid;
+  
+    grid-template-columns:
+      1fr 1fr;
+  
+    gap: 7px;
+  }
+  
+  .requirement {
+  
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 5px;
+  
+    color: #98a2b3;
+  
+    font-size: 10.5px;
+  
+    transition:
+      color var(--transition);
+  }
+  
+  .requirement i {
+  
+    font-size: 12px;
+  
+    color: #98a2b3;
+  }
+  
+  .requirement.valid {
+  
+    color: var(--sopia-success);
+  
+    font-weight: 600;
+  }
+  
+  .requirement.valid i {
+  
+    color: var(--sopia-success);
+  }
+  
+  
+  /* =========================================================
+     MENSAJES
+     ========================================================= */
+  
+  .form-message {
+  
+    display: flex;
+  
+    align-items: flex-start;
+  
+    gap: 9px;
+  
+    padding:
+      11px 13px;
+  
+    margin-bottom: 15px;
+  
+    border-radius: 10px;
+  
+    font-size: 12px;
+  
+    line-height: 1.45;
+  }
+  
+  .form-error {
+  
+    color: #a61b29;
+  
+    background:
+      rgba(220,53,69,.07);
+  
+    border:
+      1px solid rgba(220,53,69,.14);
+  }
+  
+  .form-success {
+  
+    color: #126b3c;
+  
+    background:
+      rgba(25,135,84,.08);
+  
+    border:
+      1px solid rgba(25,135,84,.16);
+  }
+  
+  
+  /* =========================================================
+     BOTÓN
+     ========================================================= */
+  
+  .btn-guardar-password {
+  
+    width: 100%;
+  
+    min-height: 53px;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: center;
+  
+    gap: 10px;
+  
+    border: none;
+  
+    border-radius: 13px;
+  
+    color: white;
+  
+    background:
+      linear-gradient(
+        135deg,
+        #0758c9,
+        #1476e8
+      );
+  
+    font-family: inherit;
+  
+    font-size: 13px;
+  
+    font-weight: 700;
+  
+    cursor: pointer;
+  
+    box-shadow:
+      0 10px 24px rgba(11,94,215,.25);
+  
+    transition:
+      transform var(--transition),
+      box-shadow var(--transition);
+  }
+  
+  .btn-guardar-password:hover:not(:disabled) {
+  
+    transform:
+      translateY(-2px);
+  
+    box-shadow:
+      0 15px 30px rgba(11,94,215,.30);
+  }
+  
+  .btn-guardar-password:disabled {
+  
+    opacity: .7;
+  
+    cursor: not-allowed;
+  }
+  
+  .btn-guardar-password > span:last-child {
+  
+    font-size: 19px;
+  
+    transition:
+      transform var(--transition);
+  }
+  
+  .btn-guardar-password:hover > span:last-child {
+  
+    transform:
+      translateX(4px);
+  }
+  
+  
+  /* =========================================================
+     SPINNER
+     ========================================================= */
+  
+  .spinner {
+  
+    width: 17px;
+    height: 17px;
+  
+    border:
+      2px solid rgba(255,255,255,.35);
+  
+    border-top-color:
+      white;
+  
+    border-radius: 50%;
+  
+    animation:
+      spin .7s linear infinite;
+  }
+  
+  
+  /* =========================================================
+     VOLVER
+     ========================================================= */
+  
+  .volver-login {
+  
+    margin-top: 21px;
+  
+    padding-top: 18px;
+  
+    border-top:
+      1px solid #eaecf0;
+  
+    text-align: center;
+  
+    color: #667085;
+  
+    font-size: 11px;
+  }
+  
+  .volver-login span {
+  
+    display: block;
+  
+    margin-bottom: 6px;
+  }
+  
+  .volver-login a {
+  
+    display: inline-flex;
+  
+    align-items: center;
+  
+    gap: 6px;
+  
+    color: var(--sopia-blue);
+  
+    font-weight: 700;
+  
+    text-decoration: none;
+  
+    transition:
+      color var(--transition);
+  }
+  
+  .volver-login a:hover {
+  
+    color: var(--sopia-blue-dark);
+  
+    text-decoration: underline;
+  }
+  
+  .volver-login a span {
+  
+    margin: 0;
+  
+    font-size: 16px;
+  }
+  
+  
+  /* =========================================================
+     SEGURIDAD
+     ========================================================= */
+  
+  .security-info {
+  
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: center;
+  
+    gap: 7px;
+  
+    margin-top: 18px;
+  
+    color: #667085;
+  
+    font-size: 10.5px;
+  }
+  
+  .security-info i {
+  
+    color: var(--sopia-success);
+  
+    font-size: 14px;
+  }
+  
+  
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+  
+  .recuperacion-pass-footer {
+  
+    position: relative;
+  
+    z-index: 5;
+  
+    min-height: 58px;
+  
+    width: 100%;
+  
+    padding:
+      13px 35px;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: space-between;
+  
+    color:
+      rgba(255,255,255,.86);
+  
+    font-size: 11px;
+  
+    background:
+      rgba(4,35,75,.38);
+  
+    border-top:
+      1px solid rgba(255,255,255,.13);
+  
+    backdrop-filter:
+      blur(10px);
+  
+    -webkit-backdrop-filter:
+      blur(10px);
+  }
+  
+  
+  /* =========================================================
+     ANIMACIONES
+     ========================================================= */
+  
+  @keyframes passCardAppear {
+  
+    from {
+  
+      opacity: 0;
+  
+      transform:
+        translateY(22px)
+        scale(.98);
+    }
+  
+    to {
+  
+      opacity: 1;
+  
+      transform:
+        translateY(0)
+        scale(1);
+    }
+  }
+  
+  @keyframes spin {
+  
+    to {
+  
+      transform:
+        rotate(360deg);
+    }
+  }
+  
+  
+  /* =========================================================
+     MODAL
+     ========================================================= */
+  
+  .modal-backdrop {
+  
+    position: fixed;
+  
+    inset: 0;
+  
+    z-index: 1000;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    padding: 30px;
+  
+    background:
+      rgba(3,25,55,.72);
+  
+    backdrop-filter:
+      blur(10px);
+  
+    -webkit-backdrop-filter:
+      blur(10px);
+  }
+  
+  .ayuda-modal {
+  
+    position: relative;
+  
+    width: 100%;
+  
+    max-width: 1040px;
+  
+    max-height:
+      calc(100vh - 60px);
+  
+    overflow-y: auto;
+  
+    padding:
+      48px 50px 42px;
+  
+    border-radius: 28px;
+  
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255,255,255,.99),
+        rgba(247,250,255,.98)
+      );
+  
+    box-shadow:
+      0 40px 100px rgba(0,18,45,.35);
+  }
+  
+  .ayuda-modal::before {
+  
+    content: "";
+  
+    position: absolute;
+  
+    top: 0;
+    left: 0;
+  
+    width: 100%;
+    height: 4px;
+  
+    background:
+      linear-gradient(
+        90deg,
+        #084298,
+        #0b5ed7,
+        #3d8bfd
+      );
+  }
+  
+  
+  /* =========================================================
+     MODAL HEADER
+     ========================================================= */
+  
+  .modal-header {
+  
+    max-width: 760px;
+  
+    margin: auto;
+  
+    text-align: center;
+  }
+  
+  .modal-brand-icon {
+  
+    width: 62px;
+    height: 62px;
+  
+    margin:
+      0 auto 16px;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 18px;
+  
+    color: white;
+  
+    background:
+      linear-gradient(
+        135deg,
+        #084298,
+        #0b5ed7,
+        #3d8bfd
+      );
+  
+    font-size: 26px;
+  }
+  
+  .modal-eyebrow {
+  
+    display: block;
+  
+    margin-bottom: 10px;
+  
+    color: var(--sopia-blue);
+  
+    font-size: 11px;
+  
+    font-weight: 800;
+  
+    letter-spacing: 1.8px;
+  }
+  
+  .ayuda-modal h2 {
+  
+    margin: 0;
+  
+    color: #101828;
+  
+    font-size: 40px;
+  
+    line-height: 1.12;
+  
+    letter-spacing: -1.4px;
+  }
+  
+  .ayuda-modal h2 span {
+  
+    color: var(--sopia-blue);
+  }
+  
+  .modal-intro {
+  
+    max-width: 700px;
+  
+    margin:
+      17px auto 35px;
+  
+    color: #667085;
+  
+    font-size: 14px;
+  
+    line-height: 1.7;
+  }
+  
+  
+  /* =========================================================
+     MODAL CARDS
+     ========================================================= */
+  
+  .ayuda-cards {
+  
+    display: grid;
+  
+    grid-template-columns:
+      repeat(3,1fr);
+  
+    gap: 20px;
+  }
+  
+  .ayuda-card {
+  
+    position: relative;
+  
+    min-height: 260px;
+  
+    padding:
+      24px 22px;
+  
+    overflow: hidden;
+  
+    border:
+      1px solid rgba(16,24,40,.08);
+  
+    border-radius: 20px;
+  
+    background:
+      rgba(255,255,255,.9);
+  
+    box-shadow:
+      0 10px 25px rgba(15,35,70,.07);
+  
+    transition:
+      transform .3s ease,
+      box-shadow .3s ease;
+  }
+  
+  .ayuda-card:hover {
+  
+    transform:
+      translateY(-8px);
+  
+    box-shadow:
+      0 22px 45px rgba(15,35,70,.13);
+  }
+  
+  .ayuda-card-top {
+  
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: space-between;
+  
+    margin-bottom: 20px;
+  }
+  
+  .ayuda-card-icon {
+  
+    width: 50px;
+    height: 50px;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 15px;
+  
+    color: var(--sopia-blue);
+  
+    background: #eaf3ff;
+  
+    font-size: 21px;
+  }
+  
+  .ayuda-card-number {
+  
+    color: #98a2b3;
+  
+    font-size: 11px;
+  
+    font-weight: 800;
+  }
+  
+  .ayuda-card h3 {
+  
+    margin:
+      0 0 10px;
+  
+    color: #101828;
+  
+    font-size: 17px;
+  }
+  
+  .ayuda-card p {
+  
+    margin: 0;
+  
+    color: #667085;
+  
+    font-size: 13px;
+  
+    line-height: 1.65;
+  }
+  
+  .ayuda-card-footer {
+  
+    position: absolute;
+  
+    left: 22px;
+    right: 22px;
+    bottom: 18px;
+  
+    padding-top: 12px;
+  
+    border-top:
+      1px solid #eaecf0;
+  
+    display: flex;
+  
+    gap: 7px;
+  
+    color: #667085;
+  
+    font-size: 11px;
+  }
+  
+  .ayuda-card-footer i {
+  
+    color: var(--sopia-success);
+  }
+  
+  .ayuda-card-featured {
+  
+    background:
+      linear-gradient(
+        145deg,
+        #ffffff,
+        #f2f7ff
+      );
+  }
+  
+  .ayuda-card-ai {
+  
+    background:
+      linear-gradient(
+        145deg,
+        #ffffff,
+        #f5f3ff
+      );
+  }
+  
+  .ayuda-card-ai .ayuda-card-icon {
+  
+    color: #6941c6;
+  
+    background: #eee7ff;
+  }
+  
+  
+  /* =========================================================
+     MODAL HIGHLIGHT
+     ========================================================= */
+  
+  .modal-highlight {
+  
+    max-width: 760px;
+  
+    margin:
+      28px auto 0;
+  
+    padding:
+      15px 19px;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 13px;
+  
+    border:
+      1px solid rgba(11,94,215,.10);
+  
+    border-radius: 14px;
+  
+    background:
+      #f5f9ff;
+  }
+  
+  .modal-highlight-icon {
+  
+    width: 38px;
+    height: 38px;
+  
+    flex-shrink: 0;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 11px;
+  
+    color: var(--sopia-blue);
+  
+    background: white;
+  }
+  
+  .modal-highlight strong,
+  .modal-highlight span {
+  
+    display: block;
+  }
+  
+  .modal-highlight strong {
+  
+    color: #101828;
+  
+    font-size: 12px;
+  }
+  
+  .modal-highlight span {
+  
+    color: #667085;
+  
+    font-size: 11px;
+  }
+  
+  
+  /* =========================================================
+     BOTÓN MODAL
+     ========================================================= */
+  
+  .btn-modal {
+  
+    min-width: 155px;
+  
+    min-height: 49px;
+  
+    margin:
+      25px auto 0;
+  
+    padding:
+      0 22px;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: center;
+  
+    gap: 9px;
+  
+    border: none;
+  
+    border-radius: 12px;
+  
+    color: white;
+  
+    background:
+      linear-gradient(
+        135deg,
+        #0758c9,
+        #1476e8
+      );
+  
+    font-family: inherit;
+  
+    font-size: 13px;
+  
+    font-weight: 700;
+  
+    cursor: pointer;
+  
+    box-shadow:
+      0 10px 24px rgba(11,94,215,.24);
+  }
+  
+  .modal-close {
+  
+    position: absolute;
+  
+    top: 20px;
+    right: 22px;
+  
+    width: 38px;
+    height: 38px;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border:
+      1px solid #e4e7ec;
+  
+    border-radius: 50%;
+  
+    background: white;
+  
+    color: #667085;
+  
+    cursor: pointer;
+  }
+  
+  
+  /* =========================================================
+     RESPONSIVE
+     ========================================================= */
+  
+  @media (max-width: 850px) {
+  
+    .recuperacion-pass-navbar {
+  
+      padding:
+        0 22px;
+    }
+  
+    .recuperacion-pass-card {
+  
+      max-width: 490px;
+    }
+  
+    .ayuda-cards {
+  
+      grid-template-columns: 1fr;
+    }
+  
+    .ayuda-card {
+  
+      min-height: 220px;
+    }
+  
+    .ayuda-card-footer {
+  
+      position: static;
+  
+      margin-top: 18px;
+    }
+  
+    .ayuda-modal {
+  
+      padding:
+        40px 28px 30px;
+    }
+  }
+  
+  
+  @media (max-width: 480px) {
+  
+    .recuperacion-pass-navbar {
+  
+      height: 64px;
+  
+      padding:
+        0 16px;
+    }
+  
+    .recuperacion-pass-navbar img {
+  
+      width: 115px;
+    }
+  
+    .ayuda-text {
+  
+      display: none;
+    }
+  
+    .btn-ayuda {
+  
+      width: 42px;
+  
+      padding: 0;
+  
+      justify-content: center;
+    }
+  
+    .recuperacion-pass-content {
+  
+      padding:
+        90px 14px 70px;
+    }
+  
+    .recuperacion-pass-card {
+  
+      padding:
+        31px 20px 25px;
+  
+      border-radius: 20px;
+    }
+  
+    .recuperacion-pass-card h1 {
+  
+      font-size: 27px;
+    }
+  
+    .requirements-list {
+  
+      grid-template-columns: 1fr;
+    }
+  
+    .recuperacion-pass-footer {
+  
+      flex-direction: column;
+  
+      justify-content: center;
+  
+      gap: 4px;
+  
+      text-align: center;
+    }
+  
+    .modal-backdrop {
+  
+      padding: 10px;
+    }
+  
+    .ayuda-modal {
+  
+      max-height:
+        calc(100vh - 20px);
+  
+      padding:
+        40px 19px 25px;
+  
+      border-radius: 21px;
+    }
+  
+    .ayuda-modal h2 {
+  
+      font-size: 27px;
+    }
+  
+    .modal-intro {
+  
+      font-size: 13px;
+    }
+  }
+  
+  
+  /* =========================================================
+     ACCESIBILIDAD
+     ========================================================= */
+  
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible {
+  
+    outline:
+      3px solid rgba(61,139,253,.35);
+  
+    outline-offset: 3px;
+  }

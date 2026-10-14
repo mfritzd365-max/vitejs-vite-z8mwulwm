@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SopIA | Portal Corporativo</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>
+
+:root{
+    --primary:#0a3d91;
+    --secondary:#1f6fdc;
+    --light:#eef5ff;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    min-height:100vh;
+    margin:0;
+
+    background:
+        linear-gradient(
+            rgba(10,61,145,.88),
+            rgba(31,111,220,.78)
+        ),
+        url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=80');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.top-navbar{
+    backdrop-filter:blur(20px);
+    background:rgba(0,0,0,.18);
+    border-bottom:1px solid rgba(255,255,255,.10);
+}
+
+.brand{
+    font-size:1.5rem;
+    font-weight:700;
+    color:white !important;
+}
+
+.company-name{
+    font-size:1.2rem;
+    color:white;
+    font-weight:600;
+}
+
+.user-badge{
+    background:rgba(255,255,255,.15);
+    border-radius:50px;
+    padding:8px 15px;
+    color:white;
+}
+
+/* ===========================
+   SIDEBAR
+=========================== */
+
+.sidebar-card{
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:25px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.sidebar-card img{
+
+    width:170px;
+    height:170px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:6px solid white;
+
+    margin-bottom:20px;
+}
+
+.sidebar-card h4{
+    font-weight:700;
+}
+
+.sidebar-card p{
+    opacity:.85;
+}
+
+.stat-card{
+
+    margin-top:15px;
+
+    background:rgba(255,255,255,.12);
+
+    border-radius:18px;
+
+    padding:15px;
+}
+
+.stat-number{
+    font-size:1.7rem;
+    font-weight:700;
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.main-container{
+    padding:30px;
+}
+
+.page-title{
+    color:white;
+    font-weight:700;
+}
+
+.page-subtitle{
+    color:rgba(255,255,255,.85);
+    margin-bottom:25px;
+}
+
+.breadcrumb{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:15px;
+
+    padding:12px 18px;
+}
+
+.breadcrumb-item,
+.breadcrumb-item.active{
+    color:white;
+}
+
+/* ===========================
+   KPI
+=========================== */
+
+.kpi-card{
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    color:white;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.kpi-card h3{
+    margin:0;
+    font-weight:700;
+}
+
+/* ===========================
+   SEARCH
+=========================== */
+
+.search-box{
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+/* ===========================
+   CARDS
+=========================== */
+
+.department-card{
+
+    border:none;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.12);
+
+    transition:.35s;
+}
+
+.department-card:hover{
+
+    transform:
+        translateY(-8px)
+        scale(1.02);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.18);
+}
+
+.department-card img{
+
+    width:100%;
+    height:190px;
+
+    object-fit:cover;
+}
+
+.department-card .card-title{
+
+    color:var(--primary);
+    font-weight:700;
+}
+
+.department-card .card-text{
+    color:#6c757d;
+}
+
+.doc-badge{
+
+    font-size:.8rem;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.footer{
+
+    background:rgba(0,0,0,.15);
+
+    backdrop-filter:blur(15px);
+
+    border-top:1px solid rgba(255,255,255,.10);
+
+    color:white;
+
+    text-align:center;
+
+    padding:15px;
+}
+.navbar-logo{
+
+    height:55px;
+    width:auto;
+
+    object-fit:contain;
+
+    display:block;
+
+    filter:
+        drop-shadow(
+            0 4px 10px rgba(0,0,0,.15)
+        );
+}
+
+.brand-beta{
+
+    color:#ffffff;
+
+    font-family:'Segoe UI',sans-serif;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    letter-spacing:.3px;
+
+    white-space:nowrap;
+
+    text-shadow:
+        0 1px 3px rgba(0,0,0,.25);
+}
+
+.navbar-logo:hover{
+    transform:scale(1.05);
+}
+.department-card{
+    position:relative;
+}
+
+.department-admin{
+    position:absolute;
+    top:15px;
+    right:15px;
+    z-index:100;
+    display:none;
+}
+
+.department-admin{
+    position:absolute;
+    top:15px;
+    right:15px;
+    z-index:100;
+    display:none;
+}
+
+.modern-checkbox{
+
+    appearance:none;
+    -webkit-appearance:none;
+
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.95);
+
+    border:2px solid #dbe4ff;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.15);
+
+    transition:.25s;
+}
+
+.modern-checkbox:hover{
+
+    transform:scale(1.08);
+
+    border-color:#1f6fdc;
+}
+
+.modern-checkbox:checked{
+
+    background:#0a3d91;
+
+    border-color:#0a3d91;
+}
+
+.modern-checkbox:checked::after{
+
+    content:"✓";
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    line-height:1;
+}
+.modern-checkbox:checked{
+
+    background:linear-gradient(
+        135deg,
+        #0a3d91,
+        #1f6fdc
+    );
+
+    border-color:#1f6fdc;
+
+    box-shadow:
+        0 0 0 4px rgba(31,111,220,.20),
+        0 10px 25px rgba(31,111,220,.30);
+}
+
+.edit-mode .department-admin{
+    display:block;
+}
+
+.edit-mode .department-card{
+    border:3px dashed rgba(10,61,145,.35);
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:991px){
+
+    .main-container{
+        padding:20px;
+    }
+
+    .sidebar-card{
+        margin-bottom:25px;
+    }
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+
+<nav class="navbar navbar-expand-lg top-navbar">
+
+<div class="container-fluid">
+
+<button
+        class="btn btn-light d-lg-none me-2"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#sidebar">
+
+    <i class="bi bi-list"></i>
+
+</button>
+
+ <a>
+    
+    
+
+    <img src="Images/Logosopia.png.png" style="
+    width: 100px;
+">
+
+    <div class="ms-3">
+
+        
+
+        <div class="brand-beta">
+            Inteligencia Artificial y Gestión del Conocimiento
+        </div>
+
+    </div>
+
+</a>
+
+</a>
+
+</a>
+<div class="d-flex align-items-center gap-3">
+
+    <div class="company-name">
+        VISION UNICA
+    </div>
+
+    <div class="user-badge admin-menu">
+        <i class="bi bi-person-circle"></i>
+        Administrador
+    </div>
+
+</div>
+
+</div>
+
+</nav>
+
+<div class="container-fluid mt-4">
+
+<div class="row">
+
+    <!-- SIDEBAR DESKTOP -->
+
+    <div class="col-lg-3 d-none d-lg-block">
+
+        <div class="sidebar-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=500&q=80"
+                alt="SopIA">
+
+            <h4>VISION UNICA</h4>
+
+            <p>
+                Inteligencia Artificial y Gestión del Conocimiento
+            </p>
+
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div>Departamentos</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">3.254</div>
+                <div>Documentos</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SIDEBAR MOBILE -->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar">
+
+        <div class="offcanvas-header">
+
+            <h5>VISION UNICA</h5>
+
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas">
+            </button>
+
+        </div>
+
+        <div class="offcanvas-body text-center">
+
+            <img
+                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=500&q=80"
+                class="img-fluid rounded-circle border border-4 mb-3">
+
+            <h5>VISION UNICA</h5>
+
+            <p>Gestión del Conocimiento</p>
+
+        </div>
+
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="col-lg-9">
+
+        <div class="main-container">
+
+            <nav aria-label="breadcrumb">
+
+                <ol class="breadcrumb">
+
+                    <li class="breadcrumb-item">
+                        Inicio
+                    </li>
+
+                    <li class="breadcrumb-item active">
+                        Departamentos
+                    </li>
+
+                </ol>
+
+            </nav>
+
+            <h2 class="page-title mt-3">
+                Portal Corporativo
+            </h2>
+
+            <p class="page-subtitle">
+                Exploración de áreas organizacionales y conocimiento empresarial.
+            </p>
+
+            <!-- KPI -->
+
+            <div class="row g-3 mb-4">
+
+                <div class="col-md-3">
+                    <div class="kpi-card">
+                        <h3>12</h3>
+                        <span>Departamentos</span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="kpi-card">
+                        <h3>245</h3>
+                        <span>Usuarios</span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="kpi-card">
+                        <h3>3254</h3>
+                        <span>Documentos</span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="kpi-card">
+                        <h3>18.750</h3>
+                        <span>Consultas IA</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SEARCH -->
+
+            <div class="search-box mb-4">
+
+                <div class="input-group">
+
+                    <span class="input-group-text bg-white border-0">
+                        <i class="bi bi-search"></i>
+                    </span>
+
+                    <input
+                        id="searchInput"
+                        type="text"
+                        class="form-control border-0"
+                        placeholder="Buscar departamento...">
+
+                </div>
+
+            </div>
+
+            <!-- CARDS -->
+
+            <div class="row g-4" id="departmentContainer">
+
+                <!-- DIRECCION -->
+
+                <div class="col-xl-4 col-md-6 department-item">
+
+                    <div class="card department-card h-100">
+                        <div class="department-admin">
+
+                                <input
+                                class="form-check-input modern-checkbox"
+                                type="checkbox">
+                        
+                        </div>
+
+                         <img src='Images/DDGG.jpg' />
+
+                        <div class="card-body">
+
+                            <span class="badge bg-primary doc-badge mb-2">
+                                189 Documentos
+                            </span>
+
+                            <h5 class="card-title">
+                                Dirección General
+                            </h5>
+
+                            <p class="card-text">
+                                Estrategia corporativa y toma de decisiones.
+                            </p>
+
+                            <button class="btn btn-primary w-100">
+                                Ingresar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- RRHH -->
+
+                <div class="col-xl-4 col-md-6 department-item">
+
+                    <div class="card department-card h-100">
+                            <div class="department-admin">
+
+                                <input
+                                class="form-check-input modern-checkbox"
+                                type="checkbox">
+                        
+                        </div>
+
+                            <img src='Images/RRHH.jpg' />
+
+                            <div class="card-body">
+
+                            <span class="badge bg-success doc-badge mb-2">
+                                421 Documentos
+                            </span>
+
+                            <h5 class="card-title">
+                                Recursos Humanos
+                            </h5>
+
+                            <p class="card-text">
+                                Gestión del talento y desarrollo organizacional.
+                            </p>
+
+                            <button class="btn btn-primary w-100">
+                                Ingresar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- TECNOLOGIA -->
+
+                <div class="col-xl-4 col-md-6 department-item">
+
+                    <div class="card department-card h-100">
+                        <div class="department-admin">
+
+                                <input
+                                class="form-check-input modern-checkbox"
+                                type="checkbox">
+                        
+                        </div>
+
+                         <img src='Images/TECIN.jpg' />
+
+                        <div class="card-body">
+
+                            <span class="badge bg-info doc-badge mb-2">
+                                632 Documentos
+                            </span>
+
+                            <h5 class="card-title">
+                                Tecnología e Innovación
+                            </h5>
+
+                            <p class="card-text">
+                                IA, desarrollo y transformación digital.
+                            </p>
+
+                            <button class="btn btn-primary w-100">
+                                Ingresar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- FINANZAS -->
+
+                <div class="col-xl-4 col-md-6 department-item">
+
+                    <div class="card department-card h-100">
+                        <div class="department-admin">
+
+                                <input
+                                class="form-check-input modern-checkbox"
+                                type="checkbox">
+                        
+                        </div>
+
+                          <img src='Images/FINA.jpg' />
+
+                        <div class="card-body">
+
+                            <span class="badge bg-warning text-dark doc-badge mb-2">
+                                311 Documentos
+                            </span>
+
+                            <h5 class="card-title">
+                                Finanzas y Administración
+                            </h5>
+
+                            <p class="card-text">
+                                Gestión financiera y presupuestaria.
+                            </p>
+
+                            <button class="btn btn-primary w-100">
+                                Ingresar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- VENTAS -->
+
+                <div class="col-xl-4 col-md-6 department-item">
+
+                    <div class="card department-card h-100">
+                        <div class="department-admin">
+
+                                <input
+                                class="form-check-input modern-checkbox"
+                                type="checkbox">
+                        
+                        </div>
+
+                        <img src='Images/VENT.jpg' />
+
+                        <div class="card-body">
+
+                            <span class="badge bg-danger doc-badge mb-2">
+                                284 Documentos
+                            </span>
+
+                            <h5 class="card-title">
+                                Comercial y Ventas
+                            </h5>
+
+                            <p class="card-text">
+                                Gestión de clientes y oportunidades.
+                            </p>
+
+                            <button class="btn btn-primary w-100">
+                                Ingresar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ANALITICA -->
+
+                <div class="col-xl-4 col-md-6 department-item">
+
+                    <div class="card department-card h-100">
+                        <div class="department-admin">
+
+                                <input
+                                class="form-check-input modern-checkbox"
+                                type="checkbox">
+                        
+                        </div>
+
+                         <img src='Images/ANDA.jpg' />
+
+                        <div class="card-body">
+
+                            <span class="badge bg-dark doc-badge mb-2">
+                                496 Documentos
+                            </span>
+
+                            <h5 class="card-title">
+                                Analítica y Datos
+                            </h5>
+
+                            <p class="card-text">
+                                BI, métricas y dashboards corporativos.
+                            </p>
+
+                            <button class="btn btn-primary w-100">
+                                Ingresar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<footer class="footer">
+    Copyright © SopIA | Inteligencia Artificial y Gestión del Conocimiento
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script>
+
+
+function habilitarEdicion(){
+
+    document.body.classList.toggle('edit-mode');
+
+    bootstrap.Modal
+        .getInstance(
+            document.getElementById('adminModal')
+        ).hide();
+}
+
+function habilitarEliminacion(){
+
+    const seleccionados =
+        document.querySelectorAll(
+            '.modern-checkbox:checked'
+        );
+
+    if(seleccionados.length === 0){
+
+        alert('Seleccione uno o más departamentos.');
+
+        return;
+    }
+
+    seleccionados.forEach(cb => {
+
+        cb.closest('.department-item').remove();
+
+    });
+
+    salirModoEdicion();
+
+    bootstrap.Modal
+        .getInstance(
+            document.getElementById('adminModal')
+        )
+        .hide();
+}
+function salirModoEdicion(){
+
+    document.body.classList.remove('edit-mode');
+
+    document
+        .querySelectorAll('.modern-checkbox')
+        .forEach(cb => {
+
+            cb.checked = false;
+
+        });
+
+    document
+        .querySelectorAll('.department-admin')
+        .forEach(item => {
+
+            item.style.display = 'none';
+
+        });
+}
+function finalizarEdicion(){
+
+    document.body.classList.remove('edit-mode');
+
+    document
+        .querySelectorAll('.modern-checkbox')
+        .forEach(cb => {
+
+            cb.checked = false;
+
+        });
+
+    document
+        .querySelectorAll('.department-admin')
+        .forEach(item => {
+
+            item.style.display = 'none';
+
+        });
+
+    bootstrap.Modal
+        .getInstance(
+            document.getElementById('adminModal')
+        )
+        .hide();
+}
+function habilitarEdicion(){
+
+    document.body.classList.add('edit-mode');
+
+    document
+        .querySelectorAll('.department-admin')
+        .forEach(item => {
+
+            item.style.display = 'block';
+
+        });
+
+    bootstrap.Modal
+        .getInstance(
+            document.getElementById('adminModal')
+        )
+        .hide();
+}
+
+
+
+document.getElementById('searchInput').addEventListener('keyup', function() {
+
+    let filter = this.value.toLowerCase();
+
+    let items = document.querySelectorAll('.department-item');
+
+    items.forEach(item => {
+
+        let text = item.innerText.toLowerCase();
+
+        item.style.display =
+            text.includes(filter)
+            ? ''
+            : 'none';
+
+    });
+
+});
+
+
+</script>
+
+
+<script>
+document.querySelector('.admin-menu').addEventListener('click', function () {
+const modal = new bootstrap.Modal(
+document.getElementById('adminModal')
+);
+modal.show();
+});
+</script>
+
+
+
+<!-- MODAL ADMIN -->
+
+<div class="modal fade" id="adminModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content border-0 shadow-lg rounded-4">
+
+            <div class="modal-header bg-primary text-white border-0">
+
+                <h5 class="modal-title">
+                    <i class="bi bi-shield-lock me-2"></i>
+                    Administración de Portal
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+           
+            <div class="modal-body p-4">
+
+                <div class="d-grid gap-3">
+
+                    <button
+                        class="btn btn-outline-primary btn-lg rounded-4"
+                        onclick="habilitarEdicion()">
+
+                        <i class="bi bi-pencil-square me-2"></i>
+                        Editar Departamentos
+
+                    </button>
+
+                    <button
+                        class="btn btn-outline-danger btn-lg rounded-4"
+                        onclick="habilitarEliminacion()">
+
+                        <i class="bi bi-trash me-2"></i>
+                        Eliminar Departamentos
+
+                    </button>
+                     <button
+                            class="btn btn-success btn-lg rounded-4"
+                            onclick="finalizarEdicion()">
+
+                            <i class="bi bi-check2-circle me-2"></i>
+                            Finalizar Edición
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

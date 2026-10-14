@@ -30,7 +30,7 @@ import {
 } from "lucide-react";
 
 import "../styles/Homeconocimiento.css";
-import logo from "../Images/logo.png";
+import logo from "../Images/logo.jpg";
 import fondo from "../Images/Fondopage.jpg";
 
 type TipoConocimiento = "Problema" | "Solución" | "Mejora" | "Sugerencia";
@@ -568,71 +568,7 @@ const Homeconocimiento: React.FC = () => {
             </section>
 
             {/* BUSCADOR */}
-            <section className="hc-search-section">
-              <div className="hc-section-heading">
-                <div>
-                  <h2>¿Qué necesitas saber?</h2>
-                  <p>
-                    Pregunta por procesos, procedimientos, soluciones o
-                    experiencias de tu organización.
-                  </p>
-                </div>
-              </div>
-
-              <div className="hc-search-box">
-                <Search size={22} />
-
-                <input
-                  type="search"
-                  value={busqueda}
-                  onChange={(event) => setBusqueda(event.target.value)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" && !event.shiftKey) {
-                      event.preventDefault();
-                      void consultarSopia();
-                    }
-                  }}
-                  placeholder={`Buscar en ${areaActiva}...`}
-                  aria-label="Buscar conocimientos"
-                />
-
-                {busqueda && (
-                  <button
-                    type="button"
-                    className="hc-clear-search"
-                    onClick={() => setBusqueda("")}
-                    aria-label="Limpiar búsqueda"
-                  >
-                    <X size={18} />
-                  </button>
-                )}
-              </div>
-
-              <div className="hc-search-hints">
-                <span>Prueba con:</span>
-                {[
-                  "Procedimientos",
-                  "Soluciones frecuentes",
-                  "Responsables",
-                ].map((sugerencia) => (
-                  <button
-                    type="button"
-                    key={sugerencia}
-                    onClick={() =>
-                      setBusqueda(
-                        sugerencia === "Procedimientos"
-                          ? `¿Qué procedimientos existen en ${areaActiva}?`
-                          : sugerencia === "Soluciones frecuentes"
-                            ? `¿Cuáles son las soluciones frecuentes en ${areaActiva}?`
-                            : `¿Quiénes son los responsables en ${areaActiva}?`
-                      )
-                    }
-                  >
-                    {sugerencia}
-                  </button>
-                ))}
-              </div>
-            </section>
+            
 
             {/* PANEL DE RESPUESTA INTELIGENTE */}
             <section className="hc-ai-panel">
